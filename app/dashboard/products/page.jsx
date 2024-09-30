@@ -45,10 +45,8 @@ const ProductsPage = async ({ searchParams }) => {
   };
 
   // Filter products by customer name and service description
-  let filteredProducts = products.filter(
-    (product) =>
-      product.musteriisim.toLowerCase().includes(q.toLowerCase()) &&
-      (product.islemdurumBir || product.islemdurumIki || product.islemdurumUc)
+  let filteredProducts = products.filter((product) =>
+    product.musteriisim.toLowerCase().includes(q.toLowerCase())
   );
 
   // If the user is not a Patron, only show products related to the current user
@@ -121,11 +119,7 @@ const ProductsPage = async ({ searchParams }) => {
                       {userPosition === "Patron" && (
                         <div className={styles.buttons}>
                           <form action={deleteProduct} method="POST">
-                            <input
-                              type="hidden"
-                              name="id"
-                              value={product.id}
-                            />
+                            <input type="hidden" name="id" value={product.id} />
                             <button
                               type="submit"
                               className={`${styles.button} ${styles.delete}`}
